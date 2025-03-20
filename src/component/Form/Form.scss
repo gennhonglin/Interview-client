@@ -7,11 +7,32 @@
     flex-direction: column;
     gap: 1rem;
     border-radius: 0.8rem;
+    margin: 0 auto;
+
+    @include responsive.tablet {
+        padding: 2rem;
+        width: 500px;
+    }
+
+    @include responsive.desktop {
+        width: 800px;
+        height: 650px;
+        padding: 64px;
+    }
 
     &__title {
         color: white;
         text-transform: uppercase;
         margin: 0;
         padding-bottom: 1.5rem;
+
+        @include responsive.tablet {
+            font-size: 2rem;
+        }
+
+        @include responsive.desktop {
+            font-size: 4rem;
+        }
     }
+
 }

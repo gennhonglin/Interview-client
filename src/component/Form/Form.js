@@ -121,13 +121,29 @@ export default function Form() {
             {/* Input Fields */}
             <div className="form__input">
                 <TextField
-                 id="filled-basic" label="First Name" name="fName" variant="filled" value={formData.fName}
+                 id="filled-basic" className="form__input__field" label="First Name" name="fName" variant="filled" value={formData.fName}
                  error={error.fName} helperText={error.fName ? "First Name is required" : ""} onChange={handleChange} required
                  sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
+                    width: "100%",
+                    height: {
+                        xs: "50px",
+                        sm: "75px",
+                        md: "100px"
+                    },
                     "& .MuiFilledInput-root": {
                         backgroundColor: "#1E1E1E", 
+                        height: {
+                            xs: "50px",
+                            sm: "75px",
+                            md: "100px"
+                        },
+                        fontSize: {
+                            xs: " 1rem",
+                            sm: "24px",
+                            md: "32px;"
+                        },
                         "&:hover": { backgroundColor: "#292929" }, 
                     }
                  }}
@@ -135,13 +151,29 @@ export default function Form() {
             </div>
             <div className="form__input">
                 <TextField
-                id="filled-basic" label="Last Name" name="lName" variant="filled" value={formData.lName}
+                id="filled-basic" className="form__input__field" label="Last Name" name="lName" variant="filled" value={formData.lName}
                 error={error.lName} helperText={error.lName ? "Last Name is required" : ""} onChange={handleChange} required
                 sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
+                    width: "100%",
+                    height: {
+                        xs: "50px",
+                        sm: "75px",
+                        md: "100px"
+                    },
                     "& .MuiFilledInput-root": {
                         backgroundColor: "#1E1E1E", 
+                        height: {
+                            xs: "50px",
+                            sm: "75px",
+                            md: "100px"
+                        },
+                        fontSize: {
+                            xs: " 1rem",
+                            sm: "24px",
+                            md: "32px;"
+                        },
                         "&:hover": { backgroundColor: "#292929" }, 
                     }
                  }}
@@ -149,27 +181,60 @@ export default function Form() {
             </div>
             <div className="form__input">
                 <TextField
-                id="filled-basic" label="Phone Number" name="number" variant="filled" value={formData.number}
+                id="filled-basic" className="form__input__field" label="Phone Number" name="number" variant="filled" value={formData.number}
                 error={error.number} helperText={phoneText.number} onChange={handleChange} required
                 sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
+                    width: "100%",
+                    height: {
+                        xs: "50px",
+                        sm: "75px",
+                        md: "100px"
+                    },
                     "& .MuiFilledInput-root": {
                         backgroundColor: "#1E1E1E",
+                        height: {
+                            xs: "50px",
+                            sm: "75px",
+                            md: "100px"
+                        },
+                        fontSize: {
+                            xs: " 1rem",
+                            sm: "24px",
+                            md: "32px;"
+                        },
                         "&:hover": { backgroundColor: "#292929" }, 
                     }
+            
                  }}
                 />
             </div>
             <div className="form__input">
                 <TextField
-                id="filled-email" label="Email" name="email" variant="filled" value={formData.email}
+                id="filled-email" className="form__input__field" label="Email" name="email" variant="filled" value={formData.email}
                 error={error.email} helperText={error.email ? "Invalid Email Format" : ""} onChange={handleChange} required
                 sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
+                    width: "100%",
+                    height: {
+                        xs: "50px",
+                        sm: "75px",
+                        md: "100px"
+                    },
                     "& .MuiFilledInput-root": {
                         backgroundColor: "#1E1E1E",
+                        height: {
+                            xs: "50px",
+                            sm: "75px",
+                            md: "100px"
+                        },
+                        fontSize: {
+                            xs: " 1rem",
+                            sm: "24px",
+                            md: "32px;"
+                        },
                         "&:hover": { backgroundColor: "#292929" }, 
                     }
                  }}
@@ -181,7 +246,23 @@ export default function Form() {
                  sx={{
                     backgroundColor: "#1E1E1E",
                     color: "white",
-                    border: "none"
+                    border: "none",
+                    height: {
+                        xs: "50px",
+                        sm: "75px",
+                        md: "80px"
+                    },
+
+                    width: {
+                        xs: "100px",
+                        sm: "150px",
+                        md: "175px"
+                    },
+                    fontSize: {
+                        xs: " 1rem",
+                        sm: "1.125rem",
+                        md: "1.25rem;"
+                    },
                  }}
                 >
                     Submit
