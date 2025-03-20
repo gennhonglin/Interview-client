@@ -1,8 +1,17 @@
+@use "../../Styles/mixins" as responsive;
+
 .header {
-    color: black;
      
     &__logo {
         padding: 1rem 0 1.5rem 0;
         width: 100%;
+
+        @include responsive.tablet {
+            width: 31.25rem;
+        }
+
+        @include responsive.desktop {
+            width: 40.625rem;
+        }
     }
 }
