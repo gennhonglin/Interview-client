@@ -91,9 +91,11 @@ export default function Form() {
             isValid = false;
         }
 
+        //Updates the error states
         setError(tempErrors);
         setPhoneText(tempPhoneText);
 
+        //If the input fields are not valid, the form should not be submitted.
         if(!isValid) {
             return;
         }
