@@ -22,6 +22,14 @@ export default function Form() {
             email: emailRef.current.value,
         };
 
+        const phoneNumber = numberRef.current.value;
+        const phoneValidation = /^[0-9]{3,10}$/;
+        
+        if(!phoneValidation.test(phoneNumber)) {
+            alert("Please enter a valid phone number.");
+            return;
+        }
+
         try {
             await axios.post("http://localhost:5000/submit", formDetails);
             alert("Form submitted successfully!");
