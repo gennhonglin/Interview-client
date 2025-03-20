@@ -1,6 +1,8 @@
 import "./Form.scss";
 import { useRef } from "react";
 import axios from "axios";
+import TextField from '@mui/material/TextField';
+import Button from '@mui/material/Button';
 
 
 export default function Form() {
@@ -54,23 +56,68 @@ export default function Form() {
 
             {/* Input Fields */}
             <div className="form__input">
-                <label>First Name:</label>
-                <input type="text" name="fName" ref={fNameRef} required></input>
+                <TextField
+                 id="filled-basic" type="text" label="First Name" name="fName" variant="filled" inputRef={fNameRef} required
+                 sx={{
+                    input: { color: 'white'},
+                    label: { color: 'lightgrey'},
+                    "& .MuiFilledInput-root": {
+                        backgroundColor: "#1E1E1E", 
+                        "&:hover": { backgroundColor: "#292929" }, 
+                    }
+                 }}
+                 />
             </div>
             <div className="form__input">
-                <label>Last Name:</label>
-                <input type="text" name="lName" ref={lNameRef} required></input>
+                <TextField
+                id="filled-basic" type="text" label="Last Name" name="lName" variant="filled" inputRef={lNameRef} required
+                sx={{
+                    input: { color: 'white'},
+                    label: { color: 'lightgrey'},
+                    "& .MuiFilledInput-root": {
+                        backgroundColor: "#1E1E1E", 
+                        "&:hover": { backgroundColor: "#292929" }, 
+                    }
+                 }}
+                />
             </div>
             <div className="form__input">
-                <label>Phone Number:</label>
-                <input type="tel" name="number" ref={numberRef} required></input>
+                <TextField
+                id="filled-basic" type="tel" label="Phone Number" name="number" variant="filled" inputRef={numberRef} required
+                sx={{
+                    input: { color: 'white'},
+                    label: { color: 'lightgrey'},
+                    "& .MuiFilledInput-root": {
+                        backgroundColor: "#1E1E1E",
+                        "&:hover": { backgroundColor: "#292929" }, 
+                    }
+                 }}
+                />
             </div>
             <div className="form__input">
-                <label>Email:</label>
-                <input type="email" name="email" ref={emailRef} required/>
+                <TextField
+                id="filled-email" type="email" label="Email" name="email" variant="filled" inputRef={emailRef} required
+                sx={{
+                    input: { color: 'white'},
+                    label: { color: 'lightgrey'},
+                    "& .MuiFilledInput-root": {
+                        backgroundColor: "#1E1E1E",
+                        "&:hover": { backgroundColor: "#292929" }, 
+                    }
+                 }}
+                />
             </div>
             <div className="form__button">
-                <button type="submit" value="submit">Submit</button>
+                <Button
+                 variant="outlined" type="submit" value="submit"
+                 sx={{
+                    backgroundColor: "#1E1E1E",
+                    color: "white",
+                    border: "none"
+                 }}
+                >
+                    Submit
+                </Button>
             </div>
         </form>
     );
