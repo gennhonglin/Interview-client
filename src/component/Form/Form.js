@@ -14,10 +14,32 @@ export default function Form() {
         email: ""
     });
     
+    //This should handle errors in the input fields
+    const [error, setError] = useState({
+        fName: false,
+        lName: false,
+        number: false,
+        email: false
+    });
+
+    const [phoneText, setPhoneText] = useState({
+        number: ""
+    });
+
+    
      //Updates the state of the input fields
     const handleChange = (e) => {
         setFormData({
             ...formData, [e.target.name]: e.target.value
+        });
+
+        //If user starts typing in the input fields, the error message should disappear
+        setError({
+            ...error, [e.target.name]: false
+        });
+        
+        setPhoneText({
+            ...phoneText, [e.target.name]: ""
         });
     }
 
@@ -27,13 +49,53 @@ export default function Form() {
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        //This should validate the input fields
+        let isValid = true;
+
+        const tempErrors = {
+            fName: false,
+            lName: false,
+            number: false,
+            email: false 
+        };
+
+        const tempPhoneText = {
+            number: "" 
+        };
+
+        //Cases to validate the input fields and display error messages
+        if(formData.fName.trim() === "") {
+            tempErrors.fName = true;
+            isValid = false;
+        }
+
+        if(formData.lName.trim() === "") { 
+            tempErrors.lName = true;
+            isValid = false;
+        }
+
 
         //This should ensure that in the phone number input field that the user only enters numbers and that the number is between 3 and 10 characters long.
         const phoneValidation = /^[0-9]{3,10}$/;
         
         if(!phoneValidation.test(formData.number)) {
-            alert("Please enter a valid phone number.");
-            return; 
+            tempErrors.number = true;
+            tempPhoneText.number = "Please enter a valid phone number";
+            isValid = false;
+        }
+
+        //This should ensure that the email input field is not empty and that the email is valid.
+        const emailValidation = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+        if(!emailValidation.test(formData.email)) {
+            tempErrors.email = true;
+            isValid = false;
+        }
+
+        setError(tempErrors);
+        setPhoneText(tempPhoneText);
+
+        if(!isValid) {
+            return;
         }
 
         try {
@@ -57,7 +119,8 @@ export default function Form() {
             {/* Input Fields */}
             <div className="form__input">
                 <TextField
-                 id="filled-basic" type="text" label="First Name" name="fName" variant="filled" value={formData.fName} onChange={handleChange} required
+                 id="filled-basic" label="First Name" name="fName" variant="filled" value={formData.fName}
+                 error={error.fName} helperText={error.fName ? "First Name is required" : ""} onChange={handleChange} required
                  sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
@@ -70,7 +133,8 @@ export default function Form() {
             </div>
             <div className="form__input">
                 <TextField
-                id="filled-basic" type="text" label="Last Name" name="lName" variant="filled" value={formData.lName} onChange={handleChange} required
+                id="filled-basic" label="Last Name" name="lName" variant="filled" value={formData.lName}
+                error={error.lName} helperText={error.lName ? "Last Name is required" : ""} onChange={handleChange} required
                 sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
@@ -83,7 +147,8 @@ export default function Form() {
             </div>
             <div className="form__input">
                 <TextField
-                id="filled-basic" type="tel" label="Phone Number" name="number" variant="filled" value={formData.number} onChange={handleChange} required
+                id="filled-basic" label="Phone Number" name="number" variant="filled" value={formData.number}
+                error={error.number} helperText={phoneText.number} onChange={handleChange} required
                 sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
@@ -96,7 +161,8 @@ export default function Form() {
             </div>
             <div className="form__input">
                 <TextField
-                id="filled-email" type="email" label="Email" name="email" variant="filled" value={formData.email} onChange={handleChange} required
+                id="filled-email" label="Email" name="email" variant="filled" value={formData.email}
+                error={error.email} helperText={error.email ? "Invalid Email Format" : ""} onChange={handleChange} required
                 sx={{
                     input: { color: 'white'},
                     label: { color: 'lightgrey'},
